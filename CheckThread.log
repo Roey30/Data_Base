@@ -1,0 +1,61 @@
+DEBUG:root:Begins checking for process:
+INFO:root:checking simple writing
+DEBUG:root:begins check writing
+INFO:root:The check has been completed
+INFO:root:checking simple reading
+DEBUG:root:begins check writing
+INFO:root:The check has been completed
+INFO:root:checking reading while writing
+DEBUG:root:begins check writing
+DEBUG:root:begins check writing
+INFO:root:The check has been completed
+INFO:root:checking writing while reading
+DEBUG:root:begins check writing
+DEBUG:root:begins check writing
+INFO:root:The check has been completed
+INFO:root:checking multiple reading
+DEBUG:root:begins check writing
+DEBUG:root:begins check writing
+DEBUG:root:begins check writing
+DEBUG:root:begins check writing
+DEBUG:root:begins check writing
+DEBUG:root:begins check writing
+DEBUG:root:begins check writing
+DEBUG:root:begins check writing
+DEBUG:root:begins check writing
+DEBUG:root:begins check writing
+INFO:root:The check has been completed
+DEBUG:root:begins check writing
+DEBUG:root:begins check writing
+DEBUG:root:begins check writing
+DEBUG:root:begins check writing
+DEBUG:root:begins check writing
+DEBUG:root:begins check writing
+DEBUG:root:begins check writing
+DEBUG:root:begins check writing
+DEBUG:root:begins check writing
+DEBUG:root:begins check writing
+DEBUG:root:begins check writing
+DEBUG:root:begins check writing
+DEBUG:root:begins check writing
+DEBUG:root:begins check writing
+DEBUG:root:begins check writing
+DEBUG:root:begins check writing
+DEBUG:root:begins check writing
+DEBUG:root:begins check writing
+DEBUG:root:begins check writing
+DEBUG:root:begins check writing
+DEBUG:root:begins check writing
+DEBUG:root:begins check writing
+DEBUG:root:begins check writing
+DEBUG:root:begins check writing
+DEBUG:root:begins check writing
+DEBUG:root:begins check writing
+DEBUG:root:begins check writing
+DEBUG:root:begins check writing
+DEBUG:root:begins check writing
+DEBUG:root:begins check writing
+INFO:root:The check has been completed
+INFO:root:checking if the values has stayed correct
+DEBUG:root:begins check writing
+INFO:root:The check has been completed

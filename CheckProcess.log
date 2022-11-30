@@ -1,0 +1,14 @@
+DEBUG:root:Begins checking for process:
+INFO:root:checking simple writing
+INFO:root:The check has been completed
+INFO:root:checking simple reading
+INFO:root:The check has been completed
+INFO:root:checking reading while writing
+INFO:root:The check has been completed
+INFO:root:checking writing while reading
+INFO:root:The check has been completed
+INFO:root:checking multiple reading
+INFO:root:The check has been completed
+INFO:root:The check has been completed
+INFO:root:checking if the values has stayed correct
+INFO:root:The check has been completed
