@@ -48,12 +48,12 @@ def main():
     read_check.join()
     logging.info("The check has been completed")
     logging.info("checking multiple reading")
-    processes = []
+    threads = []
     for i in range(10):
         read_check = threading.Thread(target=check_read_function, args=(sync,))
         read_check.start()
-        processes.append(read_check)
-    for i in processes:
+        threads.append(read_check)
+    for i in threads:
         i.join()
     logging.info("The check has been completed")
     threads = []
