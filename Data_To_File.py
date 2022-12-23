@@ -4,24 +4,36 @@ Program name : Data_Base
 Date : 30/11/2022
 Description: Data to file class - takes the database and transfer it to a file
 """
-import logging
-from pickle import loads, dumps
-import win32file
-from DataBase import *
 
-FILE_NAME = "data_to_file.bin"
+import os
+from pickle import *
+from DataBase import *
 
 
 class Data_to_file(Database):
-    """
-    Data to file class
-    """
-
-    def __init__(self):
-        """
-
-        """
+    def __init__(self, filename):
         super().__init__()
+        self.file = filename
+        if not os.path.isfile(self.file):
+            file = open(self.file, "wb")
+            dump(self.dictionary, file)
+            file.close()
+
+    def write_file(self):
+        if os.path.isfile(self.file):
+            file = open(self.file, "wb")
+            if file.writable() and self.dictionary is not None:
+                dump(self.dictionary, file)
+            file.close()
+
+    def read_file(self):
+        if os.path.isfile(self.file):
+            file = open(self.file, "rb")
+            if file.readable():
+                self.dictionary = load(file)
+                file.close()
+                return self.dictionary
+            file.close()
 
     def set_value(self, key, val):
         """
@@ -30,14 +42,10 @@ class Data_to_file(Database):
         :param val: int
         :return: result, int
         """
-        try:
-            self.load_pickle()
-            result = super().set_value(key, val)
-            self.dump_pickle()
-            return result
-        except OSError as err:
-            logging.error(f"Data to File: Got Error {err} for the file {FILE_NAME}, returning False for failure")
-            return False
+        self.read_file()
+        result = super().set_value(key, val)
+        self.write_file()
+        return result
 
     def get_value(self, key):
         """
@@ -45,7 +53,7 @@ class Data_to_file(Database):
         :param key: int
         :return: val, int
         """
-        self.load_pickle()
+        self.read_file()
         return super().get_value(key)
 
     def delete_value(self, key):
@@ -54,42 +62,7 @@ class Data_to_file(Database):
         :param key: int
         :return: val, int
         """
-        self.load_pickle()
+        self.read_file()
         result = super().delete_value(key)
-        self.dump_pickle()
+        self.write_file()
         return result
-
-    def load_pickle(self):
-        """
-
-        :return:
-        """
-        file = win32file.CopyFileW(FILE_NAME, win32file.GENERIC_READ, win32file.FILE_SHARE_READ,
-                                   None, win32file.OPEN_ALWAYS, 0, None)
-        logging.debug(f"Data to File: opens file to read {FILE_NAME}")
-        try:
-            info = win32file.ReadFile(file, 100000000)
-            assert info[0] == 0
-            self.dictionary = loads(info[1])
-        except EOFError:
-            self.dictionary = {}
-        finally:
-            win32file.CloseHandle(file)
-            logging.debug(f"Data to File: load data to file {FILE_NAME}")
-
-    def dump_pickle(self):
-        """
-
-        :return:
-        """
-        logging.debug(f"Data to File: opens the file for write {FILE_NAME}")
-        file = win32file.CreateFileW(FILE_NAME, win32file.GENERIC_WRITE, 0, None, win32file.CREATE_ALWAYS, 0, None)
-        try:
-            win32file.WriteFile(file, dumps(self.dictionary))
-            logging.debug(f"Data to file: dumps the data to the file {FILE_NAME}")
-        finally:
-            win32file.CloseHandle(file)
-
-
-if __name__ == '__main__':
-    logging.basicConfig(filename="Data_To_File.log", filemode="a", level=logging.DEBUG)
