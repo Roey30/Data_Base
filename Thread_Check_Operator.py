@@ -19,8 +19,7 @@ def main():
      :return: None
      """
     logging.debug("Begins checking for process:")
-    list_threads = Data_to_file(FILE_NAME)
-    sync = Synchronization(list_threads, False)
+    sync = Synchronization(FILE_NAME, False)
     logging.info("checking simple writing")
     write_check = threading.Thread(target=check_write_function, args=(sync,))
     write_check.start()
